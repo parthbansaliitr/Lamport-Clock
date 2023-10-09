@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16.3)
+project(LamportClock)
+set(CMAKE_CXX_STANDARD 20)
+include_directories(./include)
+add_subdirectory(./src)
+add_executable(executable main.cpp ./src/Parser.cpp ./src/PrintCommand.cpp)
