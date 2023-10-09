@@ -2,9 +2,9 @@
 #include "Command.h"
 template<typename T>
 class RecvCommand : public Command{
+public:
     T name;
     T message;
-public:
     RecvCommand(T name, T Message) : name(name), message(message){
 
     }

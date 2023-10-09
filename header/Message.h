@@ -3,12 +3,11 @@
 #include <string>
 template<typename T>
 class Message{
-private:
-    string payload;
-    T time;
-    string fromId;
 public:
-    Message(string payload, T&& time, string fromId){
+    std::string payload;
+    T time;
+    std::string fromId;
+    Message(std::string payload, T&& time, std::string fromId){
         this->payload = payload;
         this->time = std::forward(time);
         this->fromId = fromId;

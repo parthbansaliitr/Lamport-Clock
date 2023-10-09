@@ -7,4 +7,5 @@ private:
 public:
     PrintCommand(std::string &s) : s(s) {}
     void executeCmd();
+    bool validate() override{return true;}
 };

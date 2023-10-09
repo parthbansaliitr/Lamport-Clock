@@ -1,1 +1,1 @@
-add_executable(Parser.cpp PrintCommand.cpp ProcessManager.cpp)
+add_executable(Parser.cpp PrintCommand.cpp ProcessManager.cpp Process.cpp)

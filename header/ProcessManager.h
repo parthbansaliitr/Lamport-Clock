@@ -3,13 +3,19 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "Message.h"
+#include <fstream>
+// template<typename T>
+// class Process;
 template<typename T>
 class ProcessManager{
 private:
     std::vector<Process<T>*>Processes;
+    std::vector<int>isExecuted;
     std::map<T, int> idToProcessNumber;
+    std::ofstream& out;
 public:
-    ProcessManager(){
+    ProcessManager(std::ofstream& out):out(out){
 
     }
     auto addProcess(T name){
@@ -33,5 +39,12 @@ public:
         if(idToProcessNumber.find(name) == idToProcessNumber.end())return -1;
         else return idToProcessNumber[name];
     }
+    void addMessageToProcessQueue(Message<T>* msg){
+        Processes[getProcessNumber(msg->fromId)]->addMessage(msg);
+    }
     bool validateProcesses();
+    bool execute();
+    bool isDeadlocked();
+    void PrintDeadlock();
+    bool executeProceess(int id);
 };
