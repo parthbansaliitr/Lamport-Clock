@@ -21,3 +21,5 @@ recv p1 m1
 send (p1,p2,p3,p4) m2 // no space between process name and , 
 end process // no process name at last
 ```
+
+And Also No blank line in between two process
