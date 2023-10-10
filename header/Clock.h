@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <fstream>
 template<typename T>
 class Clock{
 private:
@@ -18,7 +19,12 @@ public:
         time--;
     }
     void updateClock(Clock<T> receivedClock){
-        time = max(receivedClock.time, time);
+        time = std::max(receivedClock.time, time);
         time++;
     }
+    friend std::ostream& operator<<(std::ostream &out, const Clock<T>& c){
+        out << c.time;
+        return out;
+    }
 };
+template class Clock<int>;

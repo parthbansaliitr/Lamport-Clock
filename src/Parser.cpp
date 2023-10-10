@@ -46,7 +46,7 @@ bool Parser::startParser(){
                 throw std::runtime_error("Wrong Format of ids of Processes");
             }
             std::string cur = "";
-            for(int i = 1;i<splitStr[1].size()-1;i++){
+            for(int i = 1;i<(int)splitStr[1].size()-1;i++){
                 if(splitStr[1][i] == ','){
                     ids.push_back(std::move(cur));
                 }

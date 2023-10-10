@@ -1,0 +1,8 @@
+begin process p1
+recv p2 m2
+send (p2) m1
+end process
+begin process p2
+recv p1 m1
+send (p1) m2
+end process

@@ -1,9 +1,9 @@
 #pragma once
 // template <typename T>
 class Command{
-private:
-    int type;
+// private:
 public:
+    int type;
     // void execute(){
     //     ((T*)this)->executeCmd();
     // }

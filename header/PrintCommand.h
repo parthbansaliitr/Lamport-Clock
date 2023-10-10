@@ -2,10 +2,10 @@
 #include "Command.h"
 #include <string>
 class PrintCommand : public Command{
-private:
-    std::string s;
 public:
-    PrintCommand(std::string &s) : s(s) {}
+// private:
+    std::string msg;
+    PrintCommand(std::string &s) : msg(s){type = 0;}
     void executeCmd();
     bool validate() override{return true;}
 };
