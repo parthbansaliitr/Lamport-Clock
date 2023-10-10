@@ -63,8 +63,18 @@ bool ProcessManager<T>::isDeadlocked(){
 }
 template<typename T>
 void ProcessManager<T>::PrintDeadlock(){
+    for(Process<T>* p: Processes){
+        if(getProcessNumber(p->blockingMsg.fromId) == -1){
+            out << "Process " << p->blockingMsg.fromId <<  " Never Sent the message " << p->blockingMsg.payload << "\n";
+            return;
+        }
+    }
     out << "These processes are in deadlocked:\n";
     for(Process<T>* p: Processes){
+        if(getProcessNumber(p->blockingMsg.fromId) == -1){
+            out << "Process " << p->blockingMsg.fromId <<  " Never Sent this message\n";
+            return;
+        }
         out << p->getName() << " waiting for " << p->blocked->getName() << "\n";
     } 
 }
