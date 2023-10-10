@@ -11,10 +11,4 @@ public:
     SendCommand(std::vector<T> ids, T message) : ids(ids), message(message){
         type = 2;
     }
-    // bool validate(ProcessManager<T>* manager){
-    //     for(auto i:ids){
-    //         if(manager->getProcessNumber)
-    //     }
-    // }
-    // void execute();
 };

@@ -39,7 +39,9 @@ bool ProcessManager<T>::execute(){
         }
         exec%=Processes.size();
         // Processes[exec]->execute();
+        T name1 = Processes[exec]->getName();
         executeProceess(exec);
+        exec = getProcessNumber(name1);
         if(Processes[exec]->completed()){
             idToProcessNumber.erase(Processes[exec]->getName());
             Processes.erase(Processes.begin()+exec);
@@ -106,6 +108,13 @@ bool ProcessManager<T>::executeProceess(int id){
                 if(Processes[getProcessNumber(i)]->checkMsgQueue(Processes[getProcessNumber(i)]->blockingMsg)){
                     Processes[getProcessNumber(i)]->blocked = nullptr;
                     out << "ProcessName: "<< Processes[getProcessNumber(i)]->getName() << " ClockValue: " << Processes[getProcessNumber(i)]->time << " MsgReceived "<< cmd->message << " FromProcess: " << Processes[id]->getName() << "\n";
+                    Processes[getProcessNumber(i)]->increaseCmd();
+                    if(Processes[getProcessNumber(i)]->completed()){
+                        int pid = getProcessNumber(i);
+                        idToProcessNumber.erase(Processes[pid]->getName());
+                        Processes.erase(Processes.begin()+pid);
+                        for(int i = 0;i<(int)Processes.size();i++){idToProcessNumber[Processes[i]->getName()] = i;};
+                    }
                 }
             }
         }

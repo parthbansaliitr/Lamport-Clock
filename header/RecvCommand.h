@@ -8,5 +8,4 @@ public:
     RecvCommand(T name, T Message) : name(name), message(Message){
         type = 1;
     }
-    // void execute() override;
 };
